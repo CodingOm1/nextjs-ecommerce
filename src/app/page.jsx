@@ -17,7 +17,7 @@ export default function Home() {
   // Fetch products from the API
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${process.env.BASE_URL}/api/product/get/all`);
+      const response = await axios.get("/api/product/get/all");
       setProducts(response.data.products);
       setLoading(false);
     } catch (error) {
@@ -36,7 +36,7 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.get(`${process.env.BASE_URL}/api/user/get/${userId}`);
+      const response = await axios.get(`/api/user/get/${userId}`);
       if (response.status === 200) {
         setUser(true); // User is authenticated
       } else {
@@ -64,7 +64,7 @@ export default function Home() {
   const addToCart = async (product) => {
     try {
       const userId = localStorage.getItem("userId");
-      const response = await axios.post(`${process.env.BASE_URL}/api/cart/add/${userId}`, {
+      const response = await axios.post(`/api/cart/add/${userId}`, {
         productId: product._id,
       });
 

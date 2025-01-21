@@ -70,7 +70,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.BASE_URL}/api/user/register`, Data);
+      const response = await axios.post(`/api/user/register`, Data);
 
       if (response.status === 200 || response.status === 201) {
         setSuccess("Registration successful! ");

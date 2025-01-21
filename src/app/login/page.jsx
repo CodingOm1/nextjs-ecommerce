@@ -59,7 +59,7 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post(`${process.env.BASE_URL}/api/user/login`, data);
+      const response = await axios.post(`/api/user/login`, data);
 
       if (response.data.status === 200) {
         setSuccess("Login successful!");
