@@ -17,7 +17,7 @@ export default function Cart() {
         }
 
 
-        const response = await axios.get(`/api/cart/get/${userId}`);
+        const response = await axios.get(`${process.env.BASE_URL}/api/cart/get/${userId}`);
         setCartItems(response.data.cart);
       } catch (error) {
       }
@@ -35,7 +35,7 @@ export default function Cart() {
   const addToCart = async (product) => {
     try {
       const userId = localStorage.getItem("userId");
-      const response = await axios.post(`/api/cart/add/${userId}`, {
+      const response = await axios.post(`${process.env.BASE_URL}/api/cart/add/${userId}`, {
         productId: product.productId,
       });
 
@@ -49,7 +49,7 @@ export default function Cart() {
   const ReduceQ = async (product) => {
     try {
       const userId = localStorage.getItem("userId");
-      const response = await axios.put(`/api/cart/ReduceQuantity/${userId}`, {
+      const response = await axios.put(`${process.env.BASE_URL}/api/cart/ReduceQuantity/${userId}`, {
         productId: product.productId,
       });
 
@@ -63,7 +63,7 @@ export default function Cart() {
   const removeProduct = async (product) => {
     try {
       const userId = localStorage.getItem("userId");
-      const response = await axios.put(`/api/cart/remove/${userId}`, {
+      const response = await axios.put(`${process.env.BASE_URL}/api/cart/remove/${userId}`, {
         productId: product.productId,
       });
 

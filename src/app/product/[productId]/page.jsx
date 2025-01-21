@@ -33,7 +33,7 @@ export default function ProductPage({ params: rawParams }) {
     }
 
     try {
-      const response = await axios.get(`/api/user/get/${userId}`);
+      const response = await axios.get(`${process.env.BASE_URL}/api/user/get/${userId}`);
       if (response.status === 200) {
         setUser(true); // User is authenticated
       } else {
@@ -59,7 +59,7 @@ export default function ProductPage({ params: rawParams }) {
 
     try {
       const userId = localStorage.getItem("userId");
-      const response = await axios.post(`/api/cart/add/${userId}`, {
+      const response = await axios.post(`${process.env.BASE_URL}/api/cart/add/${userId}`, {
         productId: product._id,
       });
 
@@ -77,7 +77,7 @@ export default function ProductPage({ params: rawParams }) {
 
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`/api/product/get/${params.productId}`);
+        const response = await axios.get(`${process.env.BASE_URL}/api/product/get/${params.productId}`);
         setProduct(response.data.product);
         setLoading(false);
       } catch (err) {

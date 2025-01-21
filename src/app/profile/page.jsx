@@ -21,7 +21,7 @@ export default function Profile() {
     }
 
     try {
-      const response = await axios.get(`/api/user/get/${userId}`);
+      const response = await axios.get(`${process.env.BASE_URL}/api/user/get/${userId}`);
       if (response.status === 200) {
         setUser(response.data.user);
         setLoading(false);
